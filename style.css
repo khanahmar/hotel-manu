@@ -1,0 +1,33 @@
+body {
+  background-color: rgb(174, 203, 201);
+}
+
+.btn-add {
+  background-color: #70a401;
+  border: #70a401;
+  color: white;
+}
+
+.card-set {
+  background-color: rgb(227, 221, 221);
+  border: rgb(227, 221, 221);
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.card-set:hover {
+  background-color: rgb(202, 198, 198);
+  transform: scale(1.01);
+  box-shadow: 0 3px 8px rgb(0, 0, 0, 0.6);
+}
+
+.btn-set {
+  color: white;
+  background-color: #70a401;
+  transition: 0.3s;
+}
+
+.btn-set:hover {
+  background-color: #3b5308;
+  color: white;
+}
