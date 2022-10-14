@@ -1,23 +1,44 @@
-const container = document.getElementById("container");
-function makeCard(img, title) {
-  const template = `
-        <h1>${title}</h1>
-        <img src="${img}"/>
-    `;
-  const card = document.createElement("div");
-  card.innerHTML = template;
-  container.insertAdjacentElement("beforeend", card);
-}
+const menu = document.getElementById("menu");
 
-const cardElements = [
+const menuItems = [
   {
-    img: "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "pizza 1",
+    img: "https://ph-web-bucket.s3.us-east-2.amazonaws.com/data/img/products/images/111-1627418162-chicken-tikka.jpeg",
+    title: "Chiken tandori tikka",
+    detail: "Spicy Pakistani Tikka chunks & Onions",
+    price: 499,
   },
   {
-    img: "https://images.pexels.com/photos/1552642/pexels-photo-1552642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    title: "Pizza 2",
+    img: "https://ph-web-bucket.s3.us-east-2.amazonaws.com/data/img/products/images/132-1627418066-Fajita-Sicilian.jpeg",
+    title: "Chiken BBQ",
+    detail: "Spicy Pakistani Tikka chunks & Onions",
+    price: 399,
+  },
+  {
+    img: "https://ph-web-bucket.s3.us-east-2.amazonaws.com/data/img/products/images/132-1627418066-Fajita-Sicilian.jpeg",
+    title: "Chiken BBQ",
+    detail: "Spicy Pakistani Tikka chunks & Onions",
+    price: 299,
   },
 ];
 
-cardElements.forEach((el) => makeCard(el.img, el.title));
+menuItems.map((item) => {
+  menu.innerHTML += `
+  <div class="col-md-3">
+  <div id="card" class="card mt-3 card-set">
+    <img
+      src=${item.img}
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">${item.title}</h5>
+      <p class="card-text">${item.detail}</p>
+    </div>
+    <div class="card-footer d-grid">
+      <a href="#" class="btn btn-set">Add <span class="float-end">Rs.${item.price}</span></a>
+    </div>
+  </div>
+</div>
+
+`;
+});

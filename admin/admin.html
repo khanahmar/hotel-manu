@@ -10,15 +10,16 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="pic/favicon.ico" />
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="icon" type="image/x-icon" href="../pic/favicon.ico" />
   </head>
   <body>
+    <!-- navbar start -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="../index.html">
           <img
-            src="pic/logo.png"
+            src="../pic/logo.png"
             alt="Logo"
             width="30"
             height="24"
@@ -40,10 +41,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="about.html">About</a>
+              <a class="nav-link" href="../about.html">About</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -69,34 +75,52 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="contact.html" class="nav-link">Contact</a>
+              <a href="../contact.html" class="nav-link">Contact</a>
             </li>
           </ul>
-       
-          <a href="admin/admin.html" class="btn btn-outline-success">
-            Add pizza
-          </a>
+
+          <a href="admin.html" class="btn btn-outline-success"> Add pizza </a>
         </div>
       </div>
     </nav>
-    <div class="container">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus voluptates
-      vitae omnis optio magni temporibus nemo expedita! Quo fugit maiores
-      facilis. Excepturi voluptas voluptatem nostrum in incidunt quasi
-      consequatur, deserunt nulla aperiam vero temporibus laudantium assumenda
-      distinctio aut quidem iure blanditiis consectetur nobis ut dolorem,
-      deleniti accusantium harum non. Ducimus animi optio accusantium atque
-      blanditiis et vero, natus dolorum itaque consequatur delectus ex ipsa
-      possimus veritatis, similique ullam amet. Consectetur cupiditate, rerum in
-      aspernatur culpa perspiciatis temporibus dicta accusantium placeat
-      aliquam, quis modi itaque? Possimus a at fuga commodi tempora numquam.
-      Veritatis magnam eos excepturi itaque hic qui eius cupiditate!
-    </div>
+    <!-- navbar end -->
+
+    <!-- main start -->
+    <main class="container mt-5 pt-4">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <h2>Creat your own pizza</h2>
+          <form id="form">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">img url</label>
+              <input type="text" class="form-control" id="img-url" />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Detail</label>
+              <input type="text" class="form-control" id="detail" />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Price</label>
+              <input type="text" class="form-control" id="price" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <hr />
+      <div class="row" id="menu"></div>
+    </main>
+    <!-- main end -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <script src="index.js"></script>
+    <script src="admin.js"></script>
   </body>
 </html>
