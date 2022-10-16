@@ -1,0 +1,19 @@
+
+.invalid-email {
+  color: red;
+  font-size: x-large;
+}
+
+.invalid-pass {
+  color: red;
+  font-size: x-large;
+}
+
+.email-input {
+  border: 1px solid red;
+}
+
+.pass-input {
+  border: 1px solid red;
+}
+

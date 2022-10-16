@@ -13,18 +13,6 @@ const menuItems = [
     detail: "Spicy Pakistani Tikka chunks & Onions",
     price: 499,
   },
-  {
-    img: "https://ph-web-bucket.s3.us-east-2.amazonaws.com/data/img/products/images/132-1627418066-Fajita-Sicilian.jpeg",
-    title: "Chiken BBQ",
-    detail: "Spicy Pakistani Tikka chunks & Onions",
-    price: 399,
-  },
-  {
-    img: "https://ph-web-bucket.s3.us-east-2.amazonaws.com/data/img/products/images/132-1627418066-Fajita-Sicilian.jpeg",
-    title: "Chiken BBQ",
-    detail: "Spicy Pakistani Tikka chunks & Onions",
-    price: 299,
-  },
 ];
 
 const loadData = () => {
@@ -32,23 +20,31 @@ const loadData = () => {
 
   menuItems.forEach((item) => {
     menu.innerHTML += `
-        <div class="col-md-3">
-        <div id="card" class="card mt-3 card-set">
-          <img
-            src=${item.img}
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">${item.title}</h5>
-            <p class="card-text">${item.detail}</p>
-          </div>
-          <div class="card-footer d-grid">
-            <a href="#" class="btn btn-set">Add <span class="float-end">Rs.${item.price}</span></a>
-          </div>
-        </div>
-      </div>
-      
+
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Img url</th>
+        <th scope="col">Title</th>
+        <th scope="col">Detail</th>
+        <th scope="col">Price</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>${item.img}</td>
+        <td>${item.title}</td>
+        <td>${item.detail}</td>
+        <td>${item.price}</td>
+        <td scope="col"><button id="update" class="btn btn-danger" type="button">Update</button></td>
+        <td scope="col"><button id="delete" class="btn btn-success" type="button">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
       `;
   });
 };
@@ -67,4 +63,11 @@ form.addEventListener("submit", (e) => {
 
   menuItems.push(formData);
   loadData();
+});
+
+const updateBtn = document.getElementById("update");
+const deleteBtn = document.getElementById("delete");
+
+deleteBtn.addEventListener("click", (e) => {
+  menuItems.remove();
 });
