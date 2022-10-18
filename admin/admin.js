@@ -1,3 +1,16 @@
+import menuItems from "../data.js";
+// import onLoad from "./login.js";
+
+// console.log(onLoad);
+
+// window.addEventListener("load", (e) => {
+//   if (onLoad == "false") {
+//     window.location.assign("login.html");
+//   } else {
+//     window.location.assign("admin.html");
+//   }
+// });
+
 const imgUrl = document.getElementById("img-url");
 const title = document.getElementById("title");
 const detail = document.getElementById("detail");
@@ -5,46 +18,25 @@ const price = document.getElementById("price");
 const btn = document.getElementById("button");
 const form = document.getElementById("form");
 const menu = document.getElementById("menu");
-
-const menuItems = [
-  {
-    img: "https://ph-web-bucket.s3.us-east-2.amazonaws.com/data/img/products/images/111-1627418162-chicken-tikka.jpeg",
-    title: "Chiken tandori tikka",
-    detail: "Spicy Pakistani Tikka chunks & Onions",
-    price: 499,
-  },
-];
+const updateBtn = document.querySelector(".update");
+const delBtn = document.getElementsByClassName("del");
 
 const loadData = () => {
   menu.innerHTML = "";
 
-  menuItems.forEach((item) => {
+  menuItems.map((item, index) => {
     menu.innerHTML += `
 
-    <table class="table">
-    <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Img url</th>
-        <th scope="col">Title</th>
-        <th scope="col">Detail</th>
-        <th scope="col">Price</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>${item.img}</td>
+        <th scope="row">${index + 1}</th>
+        <td> <img src="${item.img}" alt='' width='100'></td>
         <td>${item.title}</td>
         <td>${item.detail}</td>
         <td>${item.price}</td>
-        <td scope="col"><button id="update" class="btn btn-danger" type="button">Update</button></td>
-        <td scope="col"><button id="delete" class="btn btn-success" type="button">Delete</button></td>
+        <td scope="col"><button  data-upid=${index}  class="btn btn-danger update" >Update</button></td>
+        <td  scope="col"><button data-delid=${index}  class="btn btn-success del" >Delete</button></td>
       </tr>
-    </tbody>
-  </table>
-  
+
       `;
   });
 };
@@ -63,11 +55,32 @@ form.addEventListener("submit", (e) => {
 
   menuItems.push(formData);
   loadData();
+  form.reset();
 });
 
-const updateBtn = document.getElementById("update");
-const deleteBtn = document.getElementById("delete");
+menu.addEventListener("click", (e) => {
+  const id = e.target.dataset.delid;
+  if (id == undefined) {
+    !loadData();
+  } else {
+    menuItems.splice(id, 1);
+    loadData();
+    console.log(id);
+  }
 
-deleteBtn.addEventListener("click", (e) => {
-  menuItems.remove();
+  let upid = e.target.dataset.upid;
+  if (upid == undefined) {
+    !loadData();
+  } else {
+    console.log(item.img);
+
+    // imgUrl.value = item.img.innerHTML;
+    // title.value = item.title.innerHTML;
+    // detail.value = item.detail.innerHTML;
+    // price.value = item.price.innerHTML;
+  }
 });
+
+// menu.addEventListener("click", (e) => {
+//   console.log(e.target.dataset.upid);
+// });

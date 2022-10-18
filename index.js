@@ -1,4 +1,5 @@
-import menuItems from "./module-menu.js";
+import menuItems from "./data.js";
+
 const menu = document.getElementById("menu");
 
 menuItems.map((item) => {

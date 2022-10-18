@@ -1,18 +1,19 @@
-const submitBtn = document.getElementById("submit");
+const submitBtn = document.getElementById("submitbtn");
 const adminEmail = document.getElementById("admin-email");
 const adminPass = document.getElementById("admin-pass");
 const validEmail = document.getElementById("email-valid");
 const validPass = document.getElementById("pass-valid");
 const emailValue = "ahmarbilal223344@gmail.com";
 const passValue = "ahmarbilal";
-let onLoad = flase;
+
+// let onLoad = false;
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("click");
+
   if (
-    adminEmail.value.trim() === "ahmarbilal223344@gmail.com" &&
-    adminPass.value.trim() === "ahmarbilal"
+    adminEmail.value.trim() === emailValue &&
+    adminPass.value.trim() === passValue
   ) {
     window.location.assign("admin.html");
     onLoad = true;
@@ -23,5 +24,11 @@ submitBtn.addEventListener("click", (e) => {
     validPass.innerText = "invalid password !";
     validPass.classList.add("invalid-pass");
     adminPass.classList.add("pass-input");
+    onLoad = false;
   }
+
+  
 });
+
+// export default onLoad;
+
