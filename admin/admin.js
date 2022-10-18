@@ -7,7 +7,7 @@ import menuItems from "../data.js";
 //   if (onLoad == "false") {
 //     window.location.assign("login.html");
 //   } else {
-//     window.location.assign("admin.html");
+//     window.location.assign("index.html");
 //   }
 // });
 
@@ -33,10 +33,73 @@ const loadData = () => {
         <td>${item.title}</td>
         <td>${item.detail}</td>
         <td>${item.price}</td>
-        <td scope="col"><button  data-upid=${index}  class="btn btn-danger update" >Update</button></td>
+        <td scope="col"><button  data-upid=${index}  data-bs-toggle="modal"
+        data-bs-target="#updatePizzaModal-${index}"  class="btn btn-danger update" >Update</button></td>
         <td  scope="col"><button data-delid=${index}  class="btn btn-success del" >Delete</button></td>
       </tr>
 
+      <!-- update Pizza Modal starts -->
+      <div
+        class="modal fade"
+        id="updatePizzaModal-${index}"
+        tabindex="-1"
+        aria-labelledby="updatePizzaModalLabel-${index}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="updatePizzaModalLabel-${index}">Update Pizza</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+
+              <!-- form starts -->
+              <form id="form">
+                <div class="mb-3">
+                  <label for="img-url" class="form-label">img url</label>
+                  <input type="text" class="form-control" id="img-url" value=${
+                    item.img
+                  } />
+                </div>
+                <div class="mb-3">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="title" value=${
+                    item.title
+                  } />
+                </div>
+                <div class="mb-3">
+                  <label for="detail" class="form-label">Detail</label>
+                  <input type="text" class="form-control" id="detail" value=${
+                    item.detail
+                  } />
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="text" class="form-control" id="price" value=${
+                    item.price
+                  } />
+                </div>
+  
+                <button
+                  type="submit"
+                  data-bs-dismiss="modal"
+                  class="btn btn-primary"
+                >
+                 Update
+                </button>
+              </form>
+              <!-- form ends -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--update Pizza Modal ends -->
       `;
   });
 };
@@ -59,28 +122,26 @@ form.addEventListener("submit", (e) => {
 });
 
 menu.addEventListener("click", (e) => {
-  const id = e.target.dataset.delid;
-  if (id == undefined) {
+  const delid = e.target.dataset.delid;
+  if (delid == undefined) {
     !loadData();
   } else {
-    menuItems.splice(id, 1);
+    menuItems.splice(delid, 1);
     loadData();
-    console.log(id);
+    console.log(delid);
   }
 
-  let upid = e.target.dataset.upid;
+  const upid = e.target.dataset.upid;
   if (upid == undefined) {
     !loadData();
   } else {
-    console.log(item.img);
-
-    // imgUrl.value = item.img.innerHTML;
-    // title.value = item.title.innerHTML;
-    // detail.value = item.detail.innerHTML;
-    // price.value = item.price.innerHTML;
+    console.log((menuItems[upid].title = title.value));
   }
 });
 
 // menu.addEventListener("click", (e) => {
 //   console.log(e.target.dataset.upid);
 // });
+// console.log(menuItems[0]);
+// menuItems[].title = "beef tikka";
+// console.log(menuItems);

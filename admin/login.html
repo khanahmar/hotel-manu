@@ -80,38 +80,47 @@
             </li>
           </ul>
 
-          <a href="admin.html" class="btn btn-outline-success"> Add pizza </a>
+          <a href="index.html" class="btn btn-outline-success"> Add pizza </a>
         </div>
       </div>
     </nav>
     <!-- navbar end -->
 
     <!-- form start -->
-    <form class="m-5 p-5">
-      <div class="mb-3">
-        <label for="admin-email" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="admin-email"
-          aria-describedby="emailHelp"
-        />
-        <div id="email-valid" class="form-text"></div>
-      </div>
-      <div class="mb-3">
-        <label for="admin-pass" class="form-label">Password</label>
-        <input type="password" class="form-control" id="admin-pass" />
-      </div>
-      <div id="pass-valid" class="form-text"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form class="m-5 p-5">
+            <div class="mb-3">
+              <label for="admin-email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="admin-email"
+                aria-describedby="emailHelp"
+              />
+              <div id="email-valid" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="admin-pass" class="form-label">Password</label>
+              <input type="password" class="form-control" id="admin-pass" />
+            </div>
+            <div id="pass-valid" class="form-text"></div>
 
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="check" />
+              <label class="form-check-label" for="exampleCheck1"
+                >Check me out</label
+              >
+            </div>
+            <button type="submit" id="submitbtn" class="btn btn-primary">
+              Login
+            </button>
+          </form>
+        </div>
       </div>
-      <button type="submit" id="submitbtn" class="btn btn-primary">
-        Submit
-      </button>
-    </form>
+    </div>
+
     <!-- main start -->
 
     <!-- main end -->
