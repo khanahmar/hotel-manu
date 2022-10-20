@@ -1,16 +1,17 @@
-import menuItems from "../data.js";
+// import menuItems from "../data.js";
 // import onLoad from "./login.js";
 
 // console.log(onLoad);
 
 // window.addEventListener("load", (e) => {
-//   if (onLoad == "false") {
+//   if (onLoad == false) {
 //     window.location.assign("login.html");
 //   } else {
 //     window.location.assign("index.html");
 //   }
 // });
 
+let menuItems = [];
 const imgUrl = document.getElementById("img-url");
 const title = document.getElementById("title");
 const detail = document.getElementById("detail");
@@ -19,9 +20,12 @@ const btn = document.getElementById("button");
 const form = document.getElementById("form");
 const menu = document.getElementById("menu");
 const updateBtn = document.querySelector(".update");
-const delBtn = document.getElementsByClassName("del");
+
+console.log(updateBtn);
 
 const loadData = () => {
+  menuItems = JSON.parse(localStorage.getItem("menuItems"));
+  console.log(menuItems);
   menu.innerHTML = "";
 
   menuItems.map((item, index) => {
@@ -34,8 +38,8 @@ const loadData = () => {
         <td>${item.detail}</td>
         <td>${item.price}</td>
         <td scope="col"><button  data-upid=${index}  data-bs-toggle="modal"
-        data-bs-target="#updatePizzaModal-${index}"  class="btn btn-danger update" >Update</button></td>
-        <td  scope="col"><button data-delid=${index}  class="btn btn-success del" >Delete</button></td>
+        data-bs-target="#updatePizzaModal-${index}"  class="btn btn-danger" >Update</button></td>
+        <td  scope="col"><button data-delid=${index}  class="btn btn-success" >Delete</button></td>
       </tr>
 
       <!-- update Pizza Modal starts -->
@@ -89,7 +93,8 @@ const loadData = () => {
                 <button
                   type="submit"
                   data-bs-dismiss="modal"
-                  class="btn btn-primary"
+                  class=" update btn btn-primary"
+                  data-addid=${index}
                 >
                  Update
                 </button>
@@ -117,11 +122,14 @@ form.addEventListener("submit", (e) => {
   };
 
   menuItems.push(formData);
+  addLocalStorage();
   loadData();
   form.reset();
 });
 
 menu.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const delid = e.target.dataset.delid;
   if (delid == undefined) {
     !loadData();
@@ -131,17 +139,21 @@ menu.addEventListener("click", (e) => {
     console.log(delid);
   }
 
-  const upid = e.target.dataset.upid;
-  if (upid == undefined) {
-    !loadData();
-  } else {
-    console.log((menuItems[upid].title = title.value));
-  }
+  // const upid = e.target.dataset.upid;
+  // const addId = e.target.dataset.addid;
+
+  // console.log(e.target.dataset);
+
+  // if (upid == undefined) {
+  //   !loadData();
+  // } else {
+  //   if (addid !== undefined) {
+  //     console.log(menuItems[upid].title);
+  //   }
+  //   loadData();
+  // }
 });
 
-// menu.addEventListener("click", (e) => {
-//   console.log(e.target.dataset.upid);
-// });
-// console.log(menuItems[0]);
-// menuItems[].title = "beef tikka";
-// console.log(menuItems);
+const addLocalStorage = () => {
+  localStorage.setItem("menuItems", JSON.stringify(menuItems));
+};

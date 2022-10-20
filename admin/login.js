@@ -9,6 +9,8 @@ const checkBox = document.getElementById("check");
 
 let onLoad = false;
 
+// console.log(submitBtn);
+
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
 

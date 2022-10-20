@@ -1,4 +1,4 @@
-const menuItems = [
+let menuItems = [
   {
     img: "https://ph-web-bucket.s3.us-east-2.amazonaws.com/data/img/products/images/111-1627418162-chicken-tikka.jpeg",
     title: "Chiken tandori tikka",

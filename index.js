@@ -1,4 +1,8 @@
-import menuItems from "./data.js";
+// import menuItems from "./data.js";
+
+
+
+const menuItems = JSON.parse(localStorage.getItem("menuItems"));
 
 const menu = document.getElementById("menu");
 
